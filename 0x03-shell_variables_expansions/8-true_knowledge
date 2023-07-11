@@ -1,2 +1,2 @@
-#!/bn/bash
-echo $((128 + $TRUEKNOWLEDGE))
+#!/bin/bash
+echo $(($TRUEKNOWLEDGe+128))
