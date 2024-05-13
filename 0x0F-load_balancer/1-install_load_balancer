@@ -40,8 +40,8 @@ frontend phinehas-tech-frontend
 
 backend phinehas-tech-backend
     balance roundrobin
-    server 87098-web-01 34.224.1.208:80 check
-    server 87098-web-02 3.86.18.208:80 check
+    server 480127-web-01 34.224.1.208:80 check
+    server 480127-web-02 3.86.18.208:80 check
 "
 
 # shellcheck disable=SC2154
