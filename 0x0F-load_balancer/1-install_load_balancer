@@ -34,11 +34,11 @@ defaults
   timeout server 15s
   timeout http-request 10s
 
-frontend phinehas-tech-frontend
+frontend carokitonga-tech-frontend
     bind *:80
-    default_backend phinehas-tech-backend
+    default_backend carokitonga-tech-backend
 
-backend phinehas-tech-backend
+backend carokitonga-tech-backend
     balance roundrobin
     server 480127-web-01 34.224.1.208:80 check
     server 480127-web-02 3.86.18.208:80 check
