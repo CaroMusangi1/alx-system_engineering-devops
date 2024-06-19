@@ -2,6 +2,7 @@
 """Fetches the top 10 hottest posts from a Reddit API endpoint."""
 
 import requests
+import sys
 
 
 def top_ten(subreddit):
@@ -12,6 +13,7 @@ def top_ten(subreddit):
 
     Returns:
         None: If an invalid subreddit is provided or if there are no posts.
+        List[str]: The titles of the top 10 hottest posts.
     """
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     params = {"limit": 10}
@@ -19,28 +21,21 @@ def top_ten(subreddit):
 
     # Check if subreddit is provided and is a string
     if not subreddit or not isinstance(subreddit, str):
-        print(None)
-        return
+        return None
 
     try:
-        # Send GET request to Reddit API with no redirects
-        response = requests.get(url, params=params, headers=headers, allow_redirects=False)
+        # Send GET request to Reddit API
+        response = requests.get(url, params=params, headers=headers)
         response.raise_for_status()
 
         # Extract data from response
         data = response.json().get("data")
-        if not data:
-            print(None)
-            return
-        
         posts = data.get("children")
-        if not posts:
-            print(None)
-            return
 
-        # Extract and print titles of top 10 posts
+        # Extract titles of top 10 posts
         titles = [post.get("data").get("title") for post in posts]
-        for title in titles:
-            print(title)
+
+        # Print titles of top 10 posts
+        [print(title) for title in titles]
     except Exception:
-        print(None)
+        return None
